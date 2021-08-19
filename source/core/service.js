@@ -132,7 +132,10 @@ module.exports = function (server, params) {
 		_self.log.break();
 		_self.configuration.refresh();
 		_self.renderer.include.anxeb();
-		_self.routing.internal.bundle.include.anxeb();
+		
+		if (_self.routing.internal.bundle) {
+			_self.routing.internal.bundle.include.anxeb();
+		}
 
 		return new Promise(function (resolve, reject) {
 			let tries = _self.settings.tries !== undefined ? _self.settings.tries : 5;

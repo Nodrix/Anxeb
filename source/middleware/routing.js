@@ -113,9 +113,11 @@ module.exports = {
 		_self.init = function () {
 			_self.routes = {};
 
-			_self.internal.view = new ViewRoute(_self, _self.settings.internal ? _self.settings.internal.view : undefined);
-			_self.internal.container = new ContainerRoute(_self, _self.settings.internal ? _self.settings.internal.container : undefined);
-			_self.internal.bundle = new BundleRoute(_self, _self.settings.internal ? _self.settings.internal.bundle : undefined);
+			if (_self.settings.internal) {
+				_self.internal.view = new ViewRoute(_self, _self.settings.internal ? _self.settings.internal.view : undefined);
+				_self.internal.container = new ContainerRoute(_self, _self.settings.internal ? _self.settings.internal.container : undefined);
+				_self.internal.bundle = new BundleRoute(_self, _self.settings.internal ? _self.settings.internal.bundle : undefined);
+			}
 
 			if (_self.settings.routes) {
 				_self.service.fetch.modules(_self.settings.routes, 'routes').map(function (item) {

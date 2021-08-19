@@ -166,9 +166,11 @@ module.exports = {
 			},
 			anxeb   : function () {
 				let lines = ["<!-- Anxeb Base -->"];
-				lines.push('<script src="' + utils.general.path.join(_self.service.routing.internal.bundle.path, 'core/anxeb.js') + '"></script>');
-				lines.push('<script src="' + utils.general.path.join(_self.service.routing.internal.bundle.path, 'core/prototypes.js') + '"></script>');
-				lines.push('<script src="' + utils.general.path.join(_self.service.routing.internal.bundle.path, 'core/utils.js') + '"></script>');
+				if (_self.service.routing.internal.bundle) {
+					lines.push('<script src="' + utils.general.path.join(_self.service.routing.internal.bundle.path, 'core/anxeb.js') + '"></script>');
+					lines.push('<script src="' + utils.general.path.join(_self.service.routing.internal.bundle.path, 'core/prototypes.js') + '"></script>');
+					lines.push('<script src="' + utils.general.path.join(_self.service.routing.internal.bundle.path, 'core/utils.js') + '"></script>');
+				}
 				this.partial('anxeb', lines)
 			}
 		};
